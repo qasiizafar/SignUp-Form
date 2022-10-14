@@ -1,5 +1,5 @@
 # SigupApp
-
+the AccessoriesInfo is winrar file that contains the c# code & the rest files are angular files.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
 
 ## Development server
