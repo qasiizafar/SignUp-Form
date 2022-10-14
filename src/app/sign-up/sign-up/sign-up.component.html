@@ -1,0 +1,45 @@
+<form [formGroup]="formGrp" style="  margin-left : 25%">
+<div class="form-grop col-md-5">
+    <label>First Name:</label>
+    <label class="show-error">*</label><br>
+    <input type="text" class="form-control form-control" placeholder="First Name"
+    [(ngModel)]="SigupDTO.first_Name" formControlName="name" maxlength="12"> 
+</div>
+<div class="form-grop col-md-5" style="  margin-top : 1%">
+    <label>Last Name:</label>
+    <label class="show-error">*</label><br>
+    <input type="text"  class="form-control form-control" placeholder="Last Name"
+    [(ngModel)]="SigupDTO.last_Name"  maxlength="16" formControlName="lastName">
+</div>
+<div class="form-grop col-md-5" style="  margin-top : 1%">
+    <label>Email Address: </label>
+    <label class="show-error">*</label><br>
+    <input type="text" class="form-control" formControlName="emailctrl" placeholder="Email Address"
+    [(ngModel)]="SigupDTO.email_Address" >
+    <div *ngIf="emailid['emailctrl'].touched && emailid['emailctrl'].invalid" class="show-error">
+        <div *ngIf="emailid['emailctrl'].errors?.['required'] && emailid['emailctrl'].dirty">Please enter email id</div>
+        <div *ngIf="emailid['emailctrl'].errors?.['email'] && emailid['emailctrl'].dirty">Please enter valid email id</div>
+      </div>
+</div>
+
+<div class="form-grop col-md-5" style="  margin-top : 1%">
+    <label>Password:</label>
+    <label class="show-error">*</label><br>
+    <input type="text" formControlName="newPassword" class="form-control form-control" placeholder="Password"
+    [(ngModel)]="SigupDTO.password" maxlength="8">
+</div>
+<div class="form-grop col-md-5" style="  margin-top : 1%">
+    <label>Confirm Password:</label>
+    <label class="show-error">*</label><br>
+    <input type="text" formControlName="repeatNewPassword" class="form-control form-control" placeholder="Confirm Password"
+    [(ngModel)]="SigupDTO.confirm_Password" maxlength="8">
+
+    <div class="show-error"  *ngIf="formGrp.errors?.['mismatch'] && (formGrp.controls['repeatNewPassword'].dirty || formGrp.controls['repeatNewPassword'].touched)">
+        Passwords don't match.
+      </div>
+</div>
+
+<div class="form-group" style="  margin-top : 1%">
+    <button class="btn btn-info  " [disabled]="!formGrp.valid" type="submit" (click)="getDetails()">Sign Up</button>
+</div>
+</form>
